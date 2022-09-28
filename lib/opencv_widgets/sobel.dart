@@ -4,6 +4,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:opencv/opencv.dart';
 
+import '../widgets/icon.dart';
+
 class Sobel extends StatefulWidget {
   static String routeName = '/sobel';
   final List<CameraDescription> _cameras;
@@ -78,17 +80,25 @@ class _SobelState extends State<Sobel> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text('Actual Image'),
-            if (imgFile != null)
-              SizedBox(
-                height: 275,
-                child: Image.file(File(imgFile.path)),
-              ),
+            SizedBox(
+              height: 275,
+              child: (imgFile != null)
+                  ? Image.file(File(imgFile.path))
+                  : const MyIcon(
+                      icon: Icons.broken_image_outlined,
+                      size: 'xl',
+                    ),
+            ),
             const Text('Output Image'),
-            if (outputImage != null)
-              SizedBox(
-                height: 275,
-                child: outputImage,
-              ),
+            SizedBox(
+              height: 275,
+              child: (outputImage != null)
+                  ? outputImage
+                  : const MyIcon(
+                      icon: Icons.broken_image_outlined,
+                      size: 'xl',
+                    ),
+            ),
           ],
         ),
       ),

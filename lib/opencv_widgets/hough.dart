@@ -4,6 +4,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:opencv/opencv.dart';
 
+import '../widgets/icon.dart';
+
 class Hough extends StatefulWidget {
   static String routeName = '/hough';
   final List<CameraDescription> _cameras;
@@ -84,16 +86,24 @@ class _HoughState extends State<Hough> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text('Actual Image'),
-                if (imgFile != null)
-                  SizedBox(
-                    height: 275,
-                    child: Image.file(File(imgFile.path)),
-                  ),
-                const Text('Output Image'),
+                SizedBox(
+                  height: 275,
+                  child: (imgFile != null)
+                      ? Image.file(File(imgFile.path))
+                      : const MyIcon(
+                          icon: Icons.broken_image_outlined,
+                          size: 'xl',
+                        ),
+                ),
                 if (outputImage != null)
                   SizedBox(
                     height: 275,
-                    child: outputImage,
+                    child: (outputImage != null)
+                        ? outputImage
+                        : const MyIcon(
+                            icon: Icons.broken_image_outlined,
+                            size: 'xl',
+                          ),
                   ),
               ],
             ),

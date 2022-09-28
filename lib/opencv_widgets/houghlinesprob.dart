@@ -4,6 +4,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:opencv/opencv.dart';
 
+import '../widgets/icon.dart';
+
 class HoughProb extends StatefulWidget {
   static String routeName = '/houghlinesP';
   final List<CameraDescription> _cameras;
@@ -89,11 +91,15 @@ class _HoughProbState extends State<HoughProb> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text('Actual Image'),
-                if (imgFile != null)
-                  SizedBox(
-                    height: 275,
-                    child: Image.file(File(imgFile.path)),
-                  ),
+                SizedBox(
+                  height: 275,
+                  child: (imgFile != null)
+                      ? Image.file(File(imgFile.path))
+                      : const MyIcon(
+                          icon: Icons.broken_image_outlined,
+                          size: 'xl',
+                        ),
+                ),
                 // Text('Blur Image'),
                 // if (blurImage != null)
                 //   Container(
@@ -101,11 +107,15 @@ class _HoughProbState extends State<HoughProb> {
                 //     child: blurImage,
                 //   ),
                 const Text('Output Image'),
-                if (outputImage != null)
-                  SizedBox(
-                    height: 275,
-                    child: outputImage,
-                  ),
+                SizedBox(
+                  height: 275,
+                  child: (outputImage != null)
+                      ? outputImage
+                      : const MyIcon(
+                          icon: Icons.broken_image_outlined,
+                          size: 'xl',
+                        ),
+                ),
               ],
             ),
           ),
