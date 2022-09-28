@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
-import './widgets/blur.dart';
-import './widgets/gaussianblur.dart';
-import './widgets/hough.dart';
+import 'opencv_widgets/blur.dart';
+import 'opencv_widgets/gaussianblur.dart';
+import 'opencv_widgets/hough.dart';
 import './widgets/mainpage.dart';
-import './widgets/houghlinesprob.dart';
-import './widgets/sobel.dart';
+import 'opencv_widgets/houghlinesprob.dart';
+import 'opencv_widgets/sobel.dart';
 
 List<CameraDescription> _cameras;
 
