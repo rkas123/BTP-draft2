@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import './button.dart';
-import './blur.dart';
-import './gaussianblur.dart';
-import './hough.dart';
-import './houghlinesprob.dart';
-import './sobel.dart';
+import '../opencv_widgets/blur.dart';
+import '../opencv_widgets/gaussianblur.dart';
+import '../opencv_widgets/hough.dart';
+import '../opencv_widgets/houghlinesprob.dart';
+import '../opencv_widgets/sobel.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);

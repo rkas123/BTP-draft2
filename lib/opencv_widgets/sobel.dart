@@ -2,19 +2,20 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:opencv/core/core.dart';
 import 'package:opencv/opencv.dart';
 
-class BlurWidget extends StatefulWidget {
-  static String routeName = '/blur';
+import '../widgets/icon.dart';
+
+class Sobel extends StatefulWidget {
+  static String routeName = '/sobel';
   final List<CameraDescription> _cameras;
-  const BlurWidget(this._cameras, {Key key}) : super(key: key);
+  const Sobel(this._cameras, {Key key}) : super(key: key);
 
   @override
-  State<BlurWidget> createState() => _BlurWidgetState();
+  State<Sobel> createState() => _SobelState();
 }
 
-class _BlurWidgetState extends State<BlurWidget> {
+class _SobelState extends State<Sobel> {
   CameraController controller;
   Future<void> _initializeControllerFuture;
   XFile imgFile;
@@ -50,16 +51,15 @@ class _BlurWidgetState extends State<BlurWidget> {
       setState(() {
         imgFile = image;
       });
-      blur();
+      sobel();
     } catch (e) {
       // If an error occurs, log the error to the console.
       print(e);
     }
   }
 
-  void blur() async {
-    final oImage = await ImgProc.blur(
-        await imgFile.readAsBytes(), [45, 45], [20, 30], Core.borderReflect);
+  void sobel() async {
+    final oImage = await ImgProc.sobel(await imgFile.readAsBytes(), -1, 1, 1);
     setState(() {
       outputImage = Image.memory(oImage);
     });
@@ -70,7 +70,7 @@ class _BlurWidgetState extends State<BlurWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Blur'),
+        title: const Text('Gaussian Blur'),
       ),
       body: Container(
         width: double.infinity,
@@ -80,17 +80,25 @@ class _BlurWidgetState extends State<BlurWidget> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text('Actual Image'),
-            if (imgFile != null)
-              SizedBox(
-                height: 275,
-                child: Image.file(File(imgFile.path)),
-              ),
+            SizedBox(
+              height: 275,
+              child: (imgFile != null)
+                  ? Image.file(File(imgFile.path))
+                  : const MyIcon(
+                      icon: Icons.broken_image_outlined,
+                      size: 'xl',
+                    ),
+            ),
             const Text('Output Image'),
-            if (outputImage != null)
-              SizedBox(
-                height: 275,
-                child: outputImage,
-              ),
+            SizedBox(
+              height: 275,
+              child: (outputImage != null)
+                  ? outputImage
+                  : const MyIcon(
+                      icon: Icons.broken_image_outlined,
+                      size: 'xl',
+                    ),
+            ),
           ],
         ),
       ),
