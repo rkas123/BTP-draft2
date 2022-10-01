@@ -70,7 +70,7 @@ class _SobelState extends State<Sobel> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gaussian Blur'),
+        title: const Text('Sobel Operator'),
       ),
       body: Container(
         width: double.infinity,

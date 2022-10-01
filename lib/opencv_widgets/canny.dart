@@ -6,16 +6,16 @@ import 'package:opencv/opencv.dart';
 
 import '../widgets/icon.dart';
 
-class HoughProb extends StatefulWidget {
-  static String routeName = '/houghlinesP';
+class Canny extends StatefulWidget {
+  static String routeName = '/canny';
   final List<CameraDescription> _cameras;
-  const HoughProb(this._cameras, {Key key}) : super(key: key);
+  const Canny(this._cameras, {Key key}) : super(key: key);
 
   @override
-  State<HoughProb> createState() => _HoughProbState();
+  State<Canny> createState() => _CannyState();
 }
 
-class _HoughProbState extends State<HoughProb> {
+class _CannyState extends State<Canny> {
   CameraController controller;
   Future<void> _initializeControllerFuture;
   XFile imgFile;
@@ -63,12 +63,6 @@ class _HoughProbState extends State<HoughProb> {
         await ImgProc.gaussianBlur(await imgFile.readAsBytes(), [11, 11], 0);
     // var temp = oImage;
     oImage = await ImgProc.canny(await oImage, 50, 150);
-    oImage = await ImgProc.houghLinesProbabilistic(await oImage,
-        rho: 2,
-        threshold: 100,
-        minLineLength: 50,
-        maxLineGap: 10,
-        lineColor: "#ff0000");
     setState(() {
       outputImage = Image.memory(oImage);
       // blurImage = Image.memory(temp);
@@ -80,7 +74,7 @@ class _HoughProbState extends State<HoughProb> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Hough Transform'),
+          title: const Text('Canny Edge Detector'),
         ),
         body: Container(
           width: double.infinity,
