@@ -100,7 +100,7 @@ class _HoughCloudState extends State<HoughCloud> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Canny Edge Detector'),
+          title: const Text('Hough Lines via Cloud'),
         ),
         body: Container(
           width: double.infinity,

@@ -100,7 +100,7 @@ class _CannyCloudState extends State<CannyCloud> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Canny Edge Detector'),
+          title: const Text('Canny Edge Detector via Cloud'),
         ),
         body: Container(
           width: double.infinity,

@@ -100,7 +100,7 @@ class _YoloCloudState extends State<YoloCloud> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Canny Edge Detector'),
+          title: const Text('YOLO Object Localization'),
         ),
         body: Container(
           width: double.infinity,

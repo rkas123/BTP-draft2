@@ -100,7 +100,7 @@ class _SegmentedCloudState extends State<SegmentedCloud> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Canny Edge Detector'),
+          title: const Text('Segmented Image for Lane Detection'),
         ),
         body: Container(
           width: double.infinity,
