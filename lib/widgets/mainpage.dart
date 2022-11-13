@@ -7,6 +7,7 @@ import '../opencv_widgets/hough.dart';
 import '../opencv_widgets/houghlinesprob.dart';
 import '../opencv_widgets/sobel.dart';
 import '../opencv_widgets/canny.dart';
+import '../opencv_widgets/canny_cloud.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -42,6 +43,10 @@ class HomePage extends StatelessWidget {
               'Hough Transform Probabilistic',
               (context) =>
                   Navigator.of(context).pushNamed(HoughProb.routeName)),
+          Button(
+              'Canny Cloud',
+              (context) =>
+                  Navigator.of(context).pushNamed(CannyCloud.routeName)),
 
           // Button('Manual Testing', navigateToManualTesting),
           // Button('Perspective Transform', navigateToPerspective),

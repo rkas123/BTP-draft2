@@ -7,6 +7,7 @@ import 'opencv_widgets/gaussianblur.dart';
 import 'opencv_widgets/hough.dart';
 import 'opencv_widgets/houghlinesprob.dart';
 import 'opencv_widgets/sobel.dart';
+import 'opencv_widgets/canny_cloud.dart';
 
 import './widgets/mainpage.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         GaussianBlurWidget.routeName: (ctx) => GaussianBlurWidget(_cameras),
         BlurWidget.routeName: (ctx) => BlurWidget(_cameras),
         Canny.routeName: (ctx) => Canny(_cameras),
+        CannyCloud.routeName: (ctx) => CannyCloud(_cameras),
       },
     );
   }
