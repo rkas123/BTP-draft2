@@ -10,6 +10,7 @@ import 'opencv_widgets/sobel.dart';
 import 'opencv_widgets/canny_cloud.dart';
 import 'opencv_widgets/segmented_cloud.dart';
 import 'opencv_widgets/hough_cloud.dart';
+import 'opencv_widgets/yolo_cloud.dart';
 
 import './widgets/mainpage.dart';
 
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         CannyCloud.routeName: (ctx) => CannyCloud(_cameras),
         SegmentedCloud.routeName: (ctx) => SegmentedCloud(_cameras),
         HoughCloud.routeName: (ctx) => HoughCloud(_cameras),
+        YoloCloud.routeName: (ctx) => YoloCloud(_cameras),
       },
     );
   }

@@ -10,6 +10,7 @@ import '../opencv_widgets/canny.dart';
 import '../opencv_widgets/canny_cloud.dart';
 import '../opencv_widgets/hough_cloud.dart';
 import '../opencv_widgets/segmented_cloud.dart';
+import '../opencv_widgets/yolo_cloud.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -57,6 +58,10 @@ class HomePage extends StatelessWidget {
               'Hough Cloud',
               (context) =>
                   Navigator.of(context).pushNamed(HoughCloud.routeName)),
+          Button(
+              'Yolo Cloud',
+              (context) =>
+                  Navigator.of(context).pushNamed(YoloCloud.routeName)),
 
           // Button('Manual Testing', navigateToManualTesting),
           // Button('Perspective Transform', navigateToPerspective),
