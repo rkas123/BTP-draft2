@@ -20,10 +20,12 @@ class _CannyState extends State<Canny> {
   Future<void> _initializeControllerFuture;
   XFile imgFile;
   Image outputImage;
+  int timeTaken;
   // Image blurImage;
   @override
   void initState() {
     super.initState();
+    timeTaken = 0;
     imgFile = null;
     outputImage = null;
     controller = CameraController(widget._cameras[0], ResolutionPreset.medium);
@@ -59,12 +61,14 @@ class _CannyState extends State<Canny> {
   }
 
   void hough() async {
+    Stopwatch stopwatch = new Stopwatch()..start();
     var oImage =
         await ImgProc.gaussianBlur(await imgFile.readAsBytes(), [11, 11], 0);
     // var temp = oImage;
     oImage = await ImgProc.canny(await oImage, 50, 150);
     setState(() {
       outputImage = Image.memory(oImage);
+      timeTaken = stopwatch.elapsedMilliseconds;
       // blurImage = Image.memory(temp);
     });
     clickPicture();
@@ -110,6 +114,7 @@ class _CannyState extends State<Canny> {
                           size: 'xl',
                         ),
                 ),
+                Text('Time taken : ${timeTaken}'),
               ],
             ),
           ),

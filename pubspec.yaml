@@ -38,10 +38,21 @@ dependencies:
   path_provider: ^2.0.11
   http: ^0.13.5
   image_picker: ^0.8.6
+  flutter_launcher_icons: ^0.10.0
+  flutter_native_splash: ^2.2.9
+  fluttertoast: ^8.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_native_splash:
+  image: assets/logo.png
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "dev_assets/logo.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -68,6 +79,7 @@ flutter:
     - assets/NSUTfountain4.jpeg
     - assets/road1.jpg
     - assets/road2.jpg
+    - assets/logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

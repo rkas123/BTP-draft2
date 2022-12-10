@@ -10,8 +10,9 @@ import '../widgets/icon.dart';
 
 class YoloCloud extends StatefulWidget {
   static String routeName = '/YoloCloud';
+  final String url;
   final List<CameraDescription> _cameras;
-  const YoloCloud(this._cameras, {Key key}) : super(key: key);
+  const YoloCloud(this._cameras, this.url, {Key key}) : super(key: key);
 
   @override
   State<YoloCloud> createState() => _YoloCloudState();
@@ -22,11 +23,13 @@ class _YoloCloudState extends State<YoloCloud> {
   Future<void> _initializeControllerFuture;
   File imgFile;
   Image outputImage;
+  int timeTaken;
   final picker = ImagePicker();
   // Image blurImage;
   @override
   void initState() {
     super.initState();
+    timeTaken = 0;
     imgFile = null;
     outputImage = null;
     controller = CameraController(widget._cameras[0], ResolutionPreset.medium);
@@ -63,8 +66,9 @@ class _YoloCloudState extends State<YoloCloud> {
   }
 
   void hough() async {
-    final url = Uri.parse("http://192.168.1.5:5000/raahi/yolo");
-
+    Stopwatch stopwatch = new Stopwatch()..start();
+    final url = Uri.parse("${widget.url}/raahi/yolo");
+    print(url);
     try {
       var request = http.MultipartRequest(
         'POST',
@@ -88,6 +92,7 @@ class _YoloCloudState extends State<YoloCloud> {
       String imgstr = json.decode(res.body).toString();
       setState(() {
         outputImage = Image.memory(base64Decode(imgstr));
+        timeTaken = stopwatch.elapsedMilliseconds;
       });
     } catch (error) {
       print(error);
@@ -133,7 +138,8 @@ class _YoloCloudState extends State<YoloCloud> {
                 ElevatedButton(
                   onPressed: clickPicture,
                   child: const Text('Click Picture'),
-                )
+                ),
+                Text('Time taken : ${timeTaken}'),
               ],
             ),
           ),

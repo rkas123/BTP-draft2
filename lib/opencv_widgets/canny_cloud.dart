@@ -10,8 +10,9 @@ import '../widgets/icon.dart';
 
 class CannyCloud extends StatefulWidget {
   static String routeName = '/CannyCloud';
+  final String url;
   final List<CameraDescription> _cameras;
-  const CannyCloud(this._cameras, {Key key}) : super(key: key);
+  const CannyCloud(this._cameras, this.url, {Key key}) : super(key: key);
 
   @override
   State<CannyCloud> createState() => _CannyCloudState();
@@ -22,11 +23,13 @@ class _CannyCloudState extends State<CannyCloud> {
   Future<void> _initializeControllerFuture;
   File imgFile;
   Image outputImage;
+  int timeTaken;
   final picker = ImagePicker();
   // Image blurImage;
   @override
   void initState() {
     super.initState();
+    timeTaken = 0;
     imgFile = null;
     outputImage = null;
     controller = CameraController(widget._cameras[0], ResolutionPreset.medium);
@@ -63,7 +66,8 @@ class _CannyCloudState extends State<CannyCloud> {
   }
 
   void hough() async {
-    final url = Uri.parse("http://192.168.1.5:5000/raahi/canny");
+    Stopwatch stopwatch = new Stopwatch()..start();
+    final url = Uri.parse("${widget.url}/raahi/canny");
 
     try {
       var request = http.MultipartRequest(
@@ -88,6 +92,7 @@ class _CannyCloudState extends State<CannyCloud> {
       String imgstr = json.decode(res.body).toString();
       setState(() {
         outputImage = Image.memory(base64Decode(imgstr));
+        timeTaken = stopwatch.elapsedMilliseconds;
       });
     } catch (error) {
       print(error);
@@ -133,7 +138,8 @@ class _CannyCloudState extends State<CannyCloud> {
                 ElevatedButton(
                   onPressed: clickPicture,
                   child: const Text('Click Picture'),
-                )
+                ),
+                Text('Time taken : ${timeTaken}'),
               ],
             ),
           ),

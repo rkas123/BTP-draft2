@@ -1,3 +1,4 @@
+import 'package:camera_test/widgets/changeurlscreen.dart';
 import 'package:flutter/material.dart';
 
 import './button.dart';
@@ -18,7 +19,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Select the Operation')),
+      appBar: AppBar(
+        title: const Text('Select the Operation'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(ChangeUrlScreen.routeName);
+            },
+            icon: const Icon(
+              Icons.edit,
+            ),
+          ),
+        ],
+      ),
       body: GridView(
         padding: const EdgeInsets.all(10),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
