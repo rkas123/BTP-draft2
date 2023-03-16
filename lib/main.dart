@@ -12,6 +12,7 @@ import 'opencv_widgets/canny_cloud.dart';
 import 'opencv_widgets/segmented_cloud.dart';
 import 'opencv_widgets/hough_cloud.dart';
 import 'opencv_widgets/yolo_cloud.dart';
+import 'opencv_widgets/deph_estimation.dart';
 
 import './widgets/mainpage.dart';
 import './widgets/changeurlscreen.dart';
@@ -62,6 +63,7 @@ class _MyAppState extends State<MyApp> {
         SegmentedCloud.routeName: (ctx) => SegmentedCloud(_cameras, baseUrl),
         HoughCloud.routeName: (ctx) => HoughCloud(_cameras, baseUrl),
         YoloCloud.routeName: (ctx) => YoloCloud(_cameras, baseUrl),
+        DepthEstimation.routeName: (ctx) => DepthEstimation(_cameras, baseUrl),
         ChangeUrlScreen.routeName: (ctx) => ChangeUrlScreen(
               updateUrl: updateUrl,
               existingUrl: baseUrl,

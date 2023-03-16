@@ -1,3 +1,4 @@
+import 'package:camera_test/opencv_widgets/deph_estimation.dart';
 import 'package:camera_test/widgets/changeurlscreen.dart';
 import 'package:flutter/material.dart';
 
@@ -75,6 +76,11 @@ class HomePage extends StatelessWidget {
               'Yolo Cloud',
               (context) =>
                   Navigator.of(context).pushNamed(YoloCloud.routeName)),
+          Button(
+              'Depth Estimation',
+              (context) => Navigator.of(context).pushNamed(
+                    DepthEstimation.routeName,
+                  )),
 
           // Button('Manual Testing', navigateToManualTesting),
           // Button('Perspective Transform', navigateToPerspective),
