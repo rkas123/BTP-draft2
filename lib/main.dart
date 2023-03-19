@@ -1,14 +1,9 @@
+import 'package:camera_test/widgets/speech_to_text.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-
-import 'opencv_widgets/blur.dart';
 import 'opencv_widgets/canny.dart';
-import 'opencv_widgets/gaussianblur.dart';
-import 'opencv_widgets/hough.dart';
 import 'opencv_widgets/houghlinesprob.dart';
-import 'opencv_widgets/sobel.dart';
-import 'opencv_widgets/canny_cloud.dart';
 import 'opencv_widgets/segmented_cloud.dart';
 import 'opencv_widgets/hough_cloud.dart';
 import 'opencv_widgets/yolo_cloud.dart';
@@ -53,13 +48,8 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: const HomePage(),
       routes: {
-        Hough.routeName: (ctx) => Hough(_cameras),
         HoughProb.routeName: (ctx) => HoughProb(_cameras),
-        Sobel.routeName: (ctx) => Sobel(_cameras),
-        GaussianBlurWidget.routeName: (ctx) => GaussianBlurWidget(_cameras),
-        BlurWidget.routeName: (ctx) => BlurWidget(_cameras),
         Canny.routeName: (ctx) => Canny(_cameras),
-        CannyCloud.routeName: (ctx) => CannyCloud(_cameras, baseUrl),
         SegmentedCloud.routeName: (ctx) => SegmentedCloud(_cameras, baseUrl),
         HoughCloud.routeName: (ctx) => HoughCloud(_cameras, baseUrl),
         YoloCloud.routeName: (ctx) => YoloCloud(_cameras, baseUrl),
@@ -68,6 +58,7 @@ class _MyAppState extends State<MyApp> {
               updateUrl: updateUrl,
               existingUrl: baseUrl,
             ),
+        VoiceAssist.routeName: (ctx) => VoiceAssist(baseUrl),
       },
     );
   }

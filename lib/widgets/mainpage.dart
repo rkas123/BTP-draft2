@@ -1,15 +1,11 @@
 import 'package:camera_test/opencv_widgets/deph_estimation.dart';
 import 'package:camera_test/widgets/changeurlscreen.dart';
+import 'package:camera_test/widgets/speech_to_text.dart';
 import 'package:flutter/material.dart';
 
 import './button.dart';
-import '../opencv_widgets/blur.dart';
-import '../opencv_widgets/gaussianblur.dart';
-import '../opencv_widgets/hough.dart';
 import '../opencv_widgets/houghlinesprob.dart';
-import '../opencv_widgets/sobel.dart';
 import '../opencv_widgets/canny.dart';
-import '../opencv_widgets/canny_cloud.dart';
 import '../opencv_widgets/hough_cloud.dart';
 import '../opencv_widgets/segmented_cloud.dart';
 import '../opencv_widgets/yolo_cloud.dart';
@@ -42,28 +38,13 @@ class HomePage extends StatelessWidget {
           mainAxisSpacing: 20,
         ),
         children: [
-          Button(
-              'Blur',
-              (context) =>
-                  Navigator.of(context).pushNamed(BlurWidget.routeName)),
-          Button(
-              'Gaussian Blur',
-              (context) => Navigator.of(context)
-                  .pushNamed(GaussianBlurWidget.routeName)),
-          Button('Sobel',
-              (context) => Navigator.of(context).pushNamed(Sobel.routeName)),
           Button('Canny Edge Detector',
               (context) => Navigator.of(context).pushNamed(Canny.routeName)),
-          Button('Hough Transform',
-              (context) => Navigator.of(context).pushNamed(Hough.routeName)),
           Button(
               'Hough Transform Probabilistic',
               (context) =>
                   Navigator.of(context).pushNamed(HoughProb.routeName)),
-          Button(
-              'Canny Cloud',
-              (context) =>
-                  Navigator.of(context).pushNamed(CannyCloud.routeName)),
+
           Button(
               'Segmented Cloud',
               (context) =>
@@ -81,6 +62,10 @@ class HomePage extends StatelessWidget {
               (context) => Navigator.of(context).pushNamed(
                     DepthEstimation.routeName,
                   )),
+          Button(
+            'Voice Assist',
+            (context) => Navigator.of(context).pushNamed(VoiceAssist.routeName),
+          )
 
           // Button('Manual Testing', navigateToManualTesting),
           // Button('Perspective Transform', navigateToPerspective),
